@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19A602" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="General" representedClassName="General" isAbstract="YES" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Homework" representedClassName="Homework" parentEntity="General" syncable="YES">
+        <attribute name="task" optional="YES" attributeType="String"/>
+        <relationship name="lecture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lecture" inverseName="homework" inverseEntity="Lecture"/>
+        <relationship name="mark" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mark" inverseName="homework" inverseEntity="Mark"/>
+    </entity>
+    <entity name="Lector" representedClassName="Lector" parentEntity="General" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="surName" optional="YES" attributeType="String"/>
+        <relationship name="lecture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lecture" inverseName="lector" inverseEntity="Lecture"/>
+    </entity>
+    <entity name="Lecture" representedClassName="Lecture" parentEntity="General" syncable="YES">
+        <attribute name="theme" optional="YES" attributeType="String"/>
+        <relationship name="homework" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Homework" inverseName="lecture" inverseEntity="Homework"/>
+        <relationship name="lector" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lector" inverseName="lecture" inverseEntity="Lector"/>
+    </entity>
+    <entity name="Mark" representedClassName="Mark" parentEntity="General" syncable="YES">
+        <attribute name="clarification" optional="YES" attributeType="String"/>
+        <attribute name="mark" optional="YES" attributeType="String"/>
+        <relationship name="homework" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Homework" inverseName="mark" inverseEntity="Homework"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="marks" inverseEntity="Student"/>
+    </entity>
+    <entity name="Student" representedClassName="Student" parentEntity="General" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="surName" optional="YES" attributeType="String"/>
+        <relationship name="marks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mark" inverseName="student" inverseEntity="Mark"/>
+    </entity>
+    <elements>
+        <element name="General" positionX="-54" positionY="-9" width="128" height="58"/>
+        <element name="Homework" positionX="-49.7421875" positionY="130.62109375" width="128" height="88"/>
+        <element name="Lector" positionX="221.2265625" positionY="199.5" width="128" height="88"/>
+        <element name="Lecture" positionX="453.5859375" positionY="53.890625" width="128" height="88"/>
+        <element name="Mark" positionX="-11.5859375" positionY="273.93359375" width="128" height="103"/>
+        <element name="Student" positionX="-317.08984375" positionY="75.91015625" width="128" height="88"/>
+    </elements>
+</model>
